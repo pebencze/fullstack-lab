@@ -96,9 +96,9 @@ Conclusion:
 ### Async JS
 
 Many functions provided by browsers are asynchronous:
-- Making HTTP requests using fetch()
-- Accessing a user's camera or microphone using getUserMedia()
-- Asking a user to select files using showOpenFilePicker()
+- Making HTTP requests using `fetch()`
+- Accessing a user's camera or microphone using `getUserMedia()`
+- Asking a user to select files using `showOpenFilePicker()`
 
 You don't need to create most functions, but know how to use them correctly.
 
@@ -125,3 +125,29 @@ Most modern asynchronous APIs don't use callbacks. Instead, the foundation of as
 
 5. How do we tell the code to do something only AFTER a
    promise is resolved?
+
+#### Async/await
+
+This function...
+```javascript
+function handleClick() {
+    fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/")
+        .then(res => res.json())
+        .then(data => {
+            remainingText.textContent = `Remaining cards: ${data.remaining}`
+            deckId = data.deck_id
+            console.log(deckId)
+        })
+}
+```
+
+...can be transformed like this:
+```javascript
+async function handleClick() {
+    const response = await fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/")
+    const data = await res.json()
+    remainingText.textContent = `Remaining cards: ${data.remaining}`
+    deckId = data.deck_id
+    console.log(deckId)
+}
+```

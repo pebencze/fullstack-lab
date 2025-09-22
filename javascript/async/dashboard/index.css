@@ -15,9 +15,21 @@ body {
     text-shadow: 1px 1px 2px #474747;
 }
 
+header {
+    justify-content: center;
+    display: flex;
+    font-size: large;
+}
+
+footer {
+    justify-content: center;
+    display: flex;
+    font-size: small;
+}
+
 main {
     padding: 15px;
-    height: 100vh;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -31,4 +43,21 @@ div.top {
 h1.time {
     /* border: 3px dashed red; // to check the space it takes up */
     text-align: center;
+}
+
+div#crypto-top {
+    display: flex;
+    align-items: center;
+}
+
+div#crypto-top > span {
+    margin-left: 10px;
+}
+
+div#crypto {
+    font-size: 1.3rem;
+}
+
+div#crypto > p {
+    margin: 0px;
 }

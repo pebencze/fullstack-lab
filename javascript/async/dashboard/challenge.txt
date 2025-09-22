@@ -25,3 +25,10 @@
  * 
  * Don't worry about positioning the author in the lower-left yet.
  */
+
+ /**
+ * Challenge: Pull down the cryptocurrency data for dogecoin from the 
+ * CoinGecko API and log it to the console
+ * 
+ * Also add a .catch() method to console any errors that might occur to the console
+ */
