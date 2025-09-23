@@ -49,6 +49,58 @@ function getCurrentTime () {
     document.getElementById("time").textContent = date.toLocaleTimeString("en-US", {timeStyle: "medium"});
 }
 
+// // this is an older version callback-function
+// function getGeolocation() {
+//     navigator.geolocation.getCurrentPosition((position) => {
+//         console.log(position);
+// //   doSomething(position.coords.latitude, position.coords.longitude);
+// });
+// }
+
+// this is z version returning a modern promise
+function getGeolocationWithPromise() {
+    return new Promise((resolve, reject) => {
+        // The original function takes two callbacks: one for success (which we tie to resolve)
+        // and one for error (which we tie to reject).
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+}
+
+function getWeather(lat, lon){
+    fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric`)
+    .then(response => {
+        if (!response.ok) {
+            throw Error("Weather data not available")
+        }
+        return response.json()
+    })
+    .then(data => {
+        const weatherEl = document.getElementById("weather");
+        const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+        weatherEl.innerHTML = `
+            <img src=${iconUrl} />
+            <p class="weather-temp">${Math.round(data.main.temp)}°</p>
+            <p class="weather-city">${data.name}</p>
+        `
+    })
+    .catch(error => {
+        console.error(error);
+        document.getElementById("weather").textContent = "Weather data unavailable";
+    });
+
+}
+
 setBackground();
 getCoinData();
 setInterval(getCurrentTime, 1000); // calls the function every 1000ms
+getGeolocationWithPromise()
+    .then((position) => {
+        console.log(position);
+        getWeather(position.coords.latitude, position.coords.longitude);
+    })
+    .catch((error) => {
+        console.error(error);
+        document.getElementById("weather").textContent = "Location data unavailable";
+    });
+
+
