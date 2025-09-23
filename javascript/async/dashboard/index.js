@@ -31,7 +31,7 @@ function getCoinData() {
     .then(data => {
         const coinEl = document.createElement("p")
         coinEl.innerHTML = `<img src=${data.image.small}/> <span>${data.name}</span>`
-        document.getElementById("crypto").appendChild(coinEl);
+        document.getElementById("crypto-top").appendChild(coinEl);
         document.getElementById("crypto").innerHTML += ` 
                     <p>Current price: $${data.market_data.current_price.usd}</p> 
                     <p>High price:    $${data.market_data.high_24h.usd}</p> 
@@ -102,5 +102,3 @@ getGeolocationWithPromise()
         console.error(error);
         document.getElementById("weather").textContent = "Location data unavailable";
     });
-
-

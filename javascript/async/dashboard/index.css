@@ -18,7 +18,9 @@ body {
 header {
     justify-content: center;
     display: flex;
-    font-size: large;
+    font-size: 2.0rem;
+    font-weight: bold;
+    margin-top: 10px;
 }
 
 footer {
@@ -43,11 +45,13 @@ div.top {
 h1.time {
     /* border: 3px dashed red; // to check the space it takes up */
     text-align: center;
+    font-size: 3.0rem;
 }
 
 div#crypto-top {
     display: flex;
     align-items: center;
+    margin-bottom: space-between;
 }
 
 div#crypto-top > span {
@@ -60,4 +64,28 @@ div#crypto {
 
 div#crypto > p {
     margin: 0px;
+}
+
+div#weather {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    align-self: flex-start;
+    justify-content: space-around;
+    background-color: rgb(23, 175, 124);
+}
+
+div#weather > img {
+    width: 70px;
+    height: 70px;
+}
+
+p.weather-temp {
+    font-size: 1.8rem;
+}
+
+p.weather-city {
+    width: 100%;
+    text-align: center;
+    font-size: 1.3rem;
 }
