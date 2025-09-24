@@ -299,3 +299,21 @@ var sayHi = function() {
   console.log("Hi!");
 };
 ```
+
+### Closures
+JavaScript supports closure, i.e. an inner function has access to variables of an outer function. See:
+```javascript
+export default function Board() {
+  const [squares, setSquares] = useState(Array(9).fill(null));
+
+  function handleClick() {
+    const nextSquares = squares.slice();
+    nextSquares[0] = "X";
+    setSquares(nextSquares);
+  }
+
+  return (
+    <>Something</>
+  )
+};
+```

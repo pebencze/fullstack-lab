@@ -21,3 +21,18 @@ import App from "./App"; // the component you created
 
 ## Fragments
 `<></>` => to wrap multiple adjacent JSX elements
+
+## States
+~: to remember things, components use _states_
+
+## Props
+~: Props are how you pass data from a parent component to a child component. They are read-only and help make components reusable.
+
+## React Developer Tools
+This is a cool browser extension that helps you to inspect components. It contains "Profiler" and "Components".
+![](../readme/dev_tools.png)
+![](../readme/dev_tools_2.png)
+
+## Re-rendering
+- React skips re-rendering when props are unchanged...
+- the React Compiler automatically applies this: [memoization](https://react.dev/reference/react/memo)
