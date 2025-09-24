@@ -26,10 +26,12 @@ There are many ways to select an element and store a reference to it in a variab
 The `Document` interface represents any web page loaded in the browser and serves as an entry point into the web page's content, which is the DOM tree.
 
 
-### TextContent vs. InnerText
+### TextContent vs. InnerText vs. InnerHTML
 - [](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/innerText)
-- textContent is NOT aware of how the text is rendered -> hidden things
-- innerText is
+- textContent is NOT aware of how the text is rendered -> hidden things can be seen
+- innerText is aware of it
+- [using innerHTML can be dangerous](https://medium.com/@sparklewebhelp/understanding-the-risks-of-using-inner-html-in-web-development-30d4fa67f815), because it is easy to inject malicious javascript with it into the html file -> use textContent instead, because it cannot interpret the JS code
+- sanitizing can be done on the backend, as well 
 
 ### Separation of concerns (.js vs. .html)
 
@@ -150,4 +152,150 @@ async function handleClick() {
     deckId = data.deck_id
     console.log(deckId)
 }
+```
+
+#### Event listeners and async/await
+The main difference is their purpose: **event listeners *react* to user actions**, while **async/await *manages the flow* of operations that take time**.
+
+Think of it like this:
+
+  * An **event listener** is like a doorbell. You set it up and it waits to be rung. You don't know *when* it will happen, but you know *what* to do when it does.
+  * **Async/await** is like ordering a package. You place the order and `await` its arrival before you can use it. It's for handling a process with a known start and an eventual end.
+
+-----
+
+##### Event Listeners: The "When" Mechanism 👂
+
+An event listener is a function that waits for a specific event to occur on an element. Its job is to **listen and react**. The program doesn't stop or pause; it simply attaches a function to be executed *whenever* the event happens.
+
+  * **Purpose:** To respond to unpredictable events, such as user interactions (`'click'`, `'mouseover'`, `'keydown'`) or browser events (`'load'`, `'scroll'`).
+  * **Structure:** Uses a callback function. This is the code that runs *when* the event fires.
+  * **Execution Flow:** Asynchronous and non-blocking. You set up the listener, and the rest of your code continues to run. The callback function only executes when triggered.
+
+###### Simple Example: Listening for a Button Click
+
+```javascript
+// Get the button element from the HTML
+const myButton = document.getElementById('myButton');
+
+// This is the callback function that will run on a click
+function handleButtonClick() {
+  console.log('Button was clicked!');
+}
+
+// Attach the listener: "WHEN a 'click' happens on myButton, run handleButtonClick"
+myButton.addEventListener('click', handleButtonClick);
+
+console.log('This message appears immediately, without waiting for a click.');
+```
+
+-----
+
+##### Async/Await: The "How" Mechanism ⏳
+
+`async/await` is a modern way to handle **Promises**. A Promise is an object representing an operation that hasn't completed yet but is expected to in the future (like a network request). `async/await` lets you write asynchronous code that looks and feels synchronous, making it much easier to read and manage.
+
+  * **Purpose:** To manage the sequence of asynchronous operations that have a defined start and finish, like fetching data, reading a file, or waiting for a timer.
+  * **Structure:**
+      * The `async` keyword is used to declare a function that will handle asynchronous operations.
+      * The `await` keyword is used inside an `async` function to **pause its execution** until a Promise settles (either resolves or rejects).
+  * **Execution Flow:** It pauses the `async` function in a non-blocking way, allowing the rest of the program to run. Once the awaited promise is complete, the function resumes where it left off.
+
+###### Simple Example: Fetching Data from an API
+
+```javascript
+// The 'async' keyword allows us to use 'await' inside this function
+async function getUserData() {
+  console.log('Starting to fetch data...');
+  
+  try {
+    // 1. Pause the function until the data is fetched
+    const response = await fetch('https://api.github.com/users/google');
+    
+    // 2. After the fetch is done, pause again until the response is parsed as JSON
+    const data = await response.json();
+
+    // 3. Once the data is ready, log it
+    console.log(data.name); // Outputs: Google
+
+  } catch (error) {
+    console.error('Failed to fetch data:', error);
+  }
+  
+  console.log('Data fetching complete.');
+}
+
+getUserData();
+console.log('This message appears immediately, while the data is still being fetched.');
+```
+
+-----
+
+##### Putting It All Together
+
+The most common scenario is using them **together**. An event listener can trigger an `async` function. For example, a user clicks a button, and *in response*, you fetch data from an API.
+
+```javascript
+const fetchButton = document.getElementById('fetchButton');
+
+// The callback for our event listener is an async function
+fetchButton.addEventListener('click', async () => {
+  try {
+    // Use await to handle the asynchronous fetch operation
+    const response = await fetch('https://api.github.com/users/microsoft');
+    const data = await response.json();
+    
+    console.log(`Fetched user: ${data.name}`); // Outputs: Microsoft
+    // You could now update the webpage with this data
+    
+  } catch (error) {
+    console.error('Something went wrong!', error);
+  }
+});
+```
+
+In this example:
+
+1.  The **event listener** (`addEventListener`) is the *trigger* (the "when").
+2.  The **`async` function** is the *action* that contains time-consuming logic.
+3.  **`await`** manages the flow *within* that action, ensuring you don't try to use the data before it has arrived.
+
+### Import / Export
+- A `**module**` is a JavaScript file that can export elements from itself with the export keyword. Then, other modules can import them with an import statement.
+
+### Hoisting
+Hoisting is a JavaScript mechanism where variable and function declarations are moved to the top of their containing scope (either global or function scope) before code execution. It's important to note that only the declarations are hoisted, not the initializations.
+
+- **`var` declarations**: When you declare a variable with var, its declaration is hoisted to the top of its scope, and it is automatically initialized with undefined. You can access it before the line where it was declared without an error, but its value will be undefined until its assignment is reached.
+
+```javascript
+console.log(myVar); // Outputs: undefined
+var myVar = "Hello!";
+console.log(myVar); // Outputs: "Hello!"
+```
+
+- **`let` and `const` declarations**: Variables declared with let and const are also hoisted, but they are not initialized. They exist in a "temporal dead zone" (TDZ) from the start of the scope until the point where they are declared. Accessing them in the TDZ results in a ReferenceError.
+
+```javascript
+// console.log(myLet); // Throws ReferenceError: Cannot access 'myLet' before initialization
+let myLet = "Hello!";
+```
+
+- **Function declarations**: The entire function, including its body, is hoisted. This allows you to call a function before it appears in the code.
+
+```javascript
+sayHello(); // Outputs: "Hello, World!"
+
+function sayHello() {
+  console.log("Hello, World!");
+}
+```
+
+- **Function expressions**: If you assign a function to a variable (var, let, or const), the hoisting behavior of the variable applies. The variable declaration is hoisted, but the function body (the assignment) is not.
+
+```javascript
+// sayHi(); // Throws TypeError: sayHi is not a function
+var sayHi = function() {
+  console.log("Hi!");
+};
 ```
