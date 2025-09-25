@@ -1,15 +1,61 @@
 import { useState } from "react"
 
 /**
- * Parent Board component; default function of our module
+ * default function of our module
+ * @returns 
+ */
+export default function Game () {
+  const [xIsNext, setXIsNext] = useState(true);
+  const [history, setHistory] = useState([Array(9).fill(null)]);
+  const [currentMove, setCurrentMove] = useState(0);
+  const currentSquares = history[currentMove];
+
+  function handlePlay(nextSquares){
+      setXIsNext(!xIsNext);
+      console.log(`History: `, history);
+      console.log(`Next squares: `, nextSquares);
+
+      const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
+      setHistory(nextHistory);
+      setCurrentMove(nextHistory.length - 1);
+  }
+
+  function jumpTo(nextMove) {
+    setHistory(history.slice(0, nextMove + 1));
+    setXIsNext((nextMove % 2) === 0 );
+    setCurrentMove(nextMove);
+  }
+
+  const moves = history.map((squares, move) => {
+    let description = (move > 0) ? ('Go to move #' + move) : ('Go to game start');
+
+    return (
+      <li key={move}>
+        <button onClick={() => jumpTo(move)}>{description}</button>
+      </li>
+    )
+  });
+
+  return (
+    <div className="game">
+      <div className="game-board">
+        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay}/>
+      </div>
+      <div className="game-info">
+        <ol>{moves}</ol>
+      </div>
+    </div>
+  )
+}
+
+
+/**
+ * Parent Board component of Square, child of Game
  * @detail each row contains 3 Square elements that take a value prop;
  * the setSquares function triggers re-rendering of components that use the squares state
  * @returns a fragment denoted by <> and </>
  */
-export default function Board() {
-  const [squares, setSquares] = useState(Array(9).fill(null));
-  const [xIsNext, setXIsNext] = useState(true);
-
+function Board({xIsNext, squares, onPlay}) {
   /**
    * 
    * @param nextSquares uses immutability -> we copy the original array's content
@@ -27,8 +73,7 @@ export default function Board() {
     } else {
       nextSquares[i] = "O";
     }
-    setSquares(nextSquares);
-    setXIsNext(!xIsNext);
+    onPlay(nextSquares);
   }
 
   const winner = calculateWinner(squares);
