@@ -8,6 +8,8 @@ This is a repository to track my learning path in fullstack development. I will 
 - [MDN webdocs](https://developer.mozilla.org/en-US/docs/Learn_web_development)
     - I have been following parts of the Learn Web Development track and this is my main reference when learning and using new concepts/syntax in HTML, CSS, JS
 - [Javascript Info](https://javascript.info/)
+- [Official React Documentation](https://react.dev/learn/)
+    - [Thinking in React](https://react.dev/learn/thinking-in-react) is a good break-down of designing an application in React
 
 ## Projects
 

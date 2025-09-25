@@ -28,6 +28,11 @@ import App from "./App"; // the component you created
 ## Props
 ~: Props are how you pass data from a parent component to a child component. They are read-only and help make components reusable.
 
+## Props vs. State
+Props and states are the two types of "models" in React, but they areb very different.
+- **Props** are arguments that you pass from a parent component to a child component e.g. a `Form` can pass `color` prop to a `Button`
+- **State** is like a component's memory and it helps keeping track of interaction e.g. `Button` might keep track of `isHovered` state
+
 ## React Developer Tools
 This is a cool browser extension that helps you to inspect components. It contains "Profiler" and "Components".
 ![](../readme/dev_tools.png)
