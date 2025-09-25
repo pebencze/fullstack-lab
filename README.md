@@ -12,9 +12,18 @@ This is a repository to track my learning path in fullstack development. I will 
 ## Projects
 
 ### Personal Dashboard
-- [here](javascript/async/dashboard/)
+- [folder](javascript/async/dashboard/)
 - created a personal dashboard with dynamic background image, weather information based on geolocation, bitcoin prices, and time
 - usable as chrome extension in my own browser
 
 ![Personal Dashboard Screenshot](readme/dashboard.png)
 ![Chrome Extension Screenshot](readme/extension.png)
+
+### Tic-Tac-Toe
+- [folder](react/tic-tac-toe/)
+- my first project in React following the official [react.dev](https://react.dev/learn/tutorial-tic-tac-toe) tutorial
+- learned about _components_ and _states_ in React, as well as the benefits of _immutability_ by storing a history of steps
+- touched on _closures_ and _fragments_, too
+
+![Tic-Tac-Toe Screenshot](readme/tic-tac-toe.png)
+![1/2 Tic-Tac-Toe Screenshot](readme/tic-tac-toe-half.png)
