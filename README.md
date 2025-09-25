@@ -28,4 +28,10 @@ This is a repository to track my learning path in fullstack development. I will 
 - touched on _closures_ and _fragments_, too
 
 ![Tic-Tac-Toe Screenshot](readme/tic-tac-toe.png)
-![1/2 Tic-Tac-Toe Screenshot](readme/tic-tac-toe-half.png)
+
+
+### React Facts
+- [folder](react/fun-facts/)
+- small initial React projects to learn about structuring the projects, styling it and about components
+
+![React Facts Screenshot](readme/react-facts.png)
