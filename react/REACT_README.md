@@ -5,6 +5,7 @@
 
 ## JSX
 ~: A JSX element is a combination of _JavaScript code_ and _HTML tags_ that describes what you’d like to display. 
+- under the hood, JSX elements are turned into elements by calling createElement
 e.g.:
 ```javascript
 <button className="square">X</button>
@@ -20,7 +21,8 @@ import App from "./App"; // the component you created
 ```
 
 ## Fragments
-`<></>` => to wrap multiple adjacent JSX elements
+`<></>` or <Fragment></Fragment> => to wrap multiple adjacent JSX elements
+- does not insert an extra div into the DOM
 
 ## States
 ~: to remember things, components use _states_
@@ -41,3 +43,8 @@ This is a cool browser extension that helps you to inspect components. It contai
 ## Re-rendering
 - React skips re-rendering when props are unchanged...
 - the React Compiler automatically applies this: [memoization](https://react.dev/reference/react/memo)
+
+## Self-closing tags <Component />
+[](https://stackoverflow.com/questions/48991212/react-component-closing-tag)
+- components in React that don't have a child, are preferably self-closing, while components that have children need to have an ending tag
+- in HTML, the rule is a bit different and self-closing tags can onluy be used for void elements like `img`
