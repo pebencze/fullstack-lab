@@ -45,11 +45,11 @@ This is a cool browser extension that helps you to inspect components. It contai
 ![](../readme/dev_tools.png)
 ![](../readme/dev_tools_2.png)
 
-## Re-rendering
+## Re-Rendering
 - React skips re-rendering when props are unchanged...
 - the React Compiler automatically applies this: [memoization](https://react.dev/reference/react/memo)
 
-## Self-closing tags <Component />
+## Self-Closing Tags <Component />
 [](https://stackoverflow.com/questions/48991212/react-component-closing-tag)
 - components in React that don't have a child, are preferably self-closing, while components that have children need to have an ending tag
 - in HTML, the rule is a bit different and self-closing tags can onluy be used for void elements like `img`
@@ -60,3 +60,18 @@ This is a cool browser extension that helps you to inspect components. It contai
 |---------|---------------------------------------|-----------------------------------|
 | Default | `export default function Button() {}` | `import Button from './Button.js';` |
 | Named   | `export function Button() {}`         | `import { Button } from './Button.js';` |
+
+## Barrel Exports
+[Guide here](https://blog.logrocket.com/using-barrel-exports-organize-react-components/#how-to-use-barrel-exports)
+- you can import multiple files in one single line, like this
+`import {util, mod, lay} from './components'`
+- Steps:
+    - we need an `index.js` file at the root of the `components` folder
+    - change from default to named exports
+    - we can use (multiple) aliases for our exports, e.g.
+        - `import * as util from './components'`
+
+## Rendering Lists
+- [official doc](https://react.dev/learn/rendering-lists)
+- JavaScript array methods – e.g. `filter()`, `map()` – can be used to manipulate an array of data in React 
+- an ID (uuid or database index) is needed to track what items get deleted, inserted or updated

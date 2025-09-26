@@ -1,25 +1,28 @@
-import Header from '@/components/Header';
-import Entry from './components/Entry';
-// import Joke from './components/Joke';
-// import jokesData from  './data/jokesData';
+// import Header from '@/components/Header';
+// import Entry from '@/components/Entry';
+import journalData from '@/data/journalData';
+import { Entry, Header } from './components';
 
 function App(){
+
+  const entries = journalData.map(entry => {
+    return (
+      <Entry 
+         key={entry.id} // key 
+         img={entry.img}
+         country={entry.country}
+         googleMapsLink={entry.googleMapsLink}
+         title={entry.title}
+         dates={entry.dates}
+         description={entry.description}
+      />
+    )
+  })
+
   return (
     <>
       <Header />
-      <main className="container">
-        <Entry 
-          img={{
-              src: "https://upload.wikimedia.org/wikipedia/commons/f/f8/View_of_Mount_Fuji_from_%C5%8Cwakudani_20211202.jpg",
-              alt: "Mount Fuji"
-          }}
-          title="Mount Fuji"
-          country="Japan"
-          googleMapsLink="https://www.google.com/maps/place/Mount+Fuji/@35.3606421,138.7170637,15z/data=!3m1!4b1!4m6!3m5!1s0x6019629a42fdc899:0xa6a1fcc916f3a4df!8m2!3d35.3606255!4d138.7273634!16zL20vMGNrczA?entry=ttu"
-          dates="12 Jan, 2021 - 24 Jan, 2021"
-          description="Mount Fuji is the tallest mountain in Japan, standing at 3,776 meters (12,380 feet). Mount Fuji is the single most popular tourist site in Japan, for both Japanese and foreign tourists."
-        />
-      </main>
+      <main className="container">{entries}</main>
     </>
   )
 }
@@ -27,6 +30,8 @@ function App(){
 
 // ------------------ STUDY -------------------------------- //
 
+// import Joke from './components/Joke';
+// import jokesData from  './data/jokesData';
 
 // function App(){
 //   return (

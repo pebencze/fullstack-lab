@@ -1,4 +1,4 @@
-export default function Header() {
+export function Header() {
     return (
         <header>
             <img src="./src/assets/globe.png" alt="globe" />

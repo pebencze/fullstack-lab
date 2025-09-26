@@ -1,4 +1,4 @@
-export default function Entry(props) {
+export function Entry(props) {
     return (
         <article className="journal-entry">
             <div className="location-image-container">
