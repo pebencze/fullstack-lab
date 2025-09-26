@@ -40,3 +40,8 @@ This is a repository to track my learning path in fullstack development. I will 
 ### Travel Journal
 - [source code](react/data-driven-react/)
 - travel journal using _props_ to pass an array of data from a `.js` file to our _components_
+
+
+![Travel Journal Screenshot](readme/travel-journal.png)
+
+
