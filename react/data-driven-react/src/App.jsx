@@ -1,6 +1,7 @@
 import Header from '@/components/Header';
 import Entry from './components/Entry';
-import Joke from './components/Joke';
+// import Joke from './components/Joke';
+// import jokesData from  './data/jokesData';
 
 function App(){
   return (
@@ -22,6 +23,10 @@ function App(){
     </>
   )
 }
+
+
+// ------------------ STUDY -------------------------------- //
+
 
 // function App(){
 //   return (
@@ -51,6 +56,44 @@ function App(){
 //       />
 //     </>
 //   )
+// }
+
+
+// /**
+//  * jokeElements is an array of JSX elements.
+//  */
+// function App() {
+
+//   const jokeElements = jokesData.map(joke => {
+//     return (<Joke
+//         setup={joke.setup}
+//         punchline={joke.punchline}
+//         upVotes={joke.upVotes}
+//         isPun={joke.isPun}
+//       />)
+//   });
+
+//   return (
+//      <main>{jokeElements}</main>
+//   )
+// };
+
+
+// function App() {
+    
+//     /**
+//      * Challenge: manually turn this string array into an array of
+//      * JSX elements by surrounding each ninja turtle with an <h2> element
+//      */
+    
+//     const ninjaTurtles = ["Donatello", "Michaelangelo", "Rafael", "Leonardo"]
+//     const ninjaTurtlesJsx = ninjaTurtles.map(i => { return(<h2>{i}</h2>)})
+//     return (
+//         <main>
+//             {ninjaTurtles}
+//             {ninjaTurtlesJsx}
+//         </main>
+//     )
 // }
 
 export default App;
