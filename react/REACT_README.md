@@ -1,4 +1,9 @@
 # React
+
+## Best Practices
+
+- [Medium article about BEST PRACTICES](https://medium.com/@oretugafolorunso/five-best-practices-for-front-end-development-react-42f187a996b1)
+
 ## Components
 ~: a component is _a piece of reusable code_ that represents a part of a user interface
 -> to manage, render, update UI elements
@@ -48,3 +53,10 @@ This is a cool browser extension that helps you to inspect components. It contai
 [](https://stackoverflow.com/questions/48991212/react-component-closing-tag)
 - components in React that don't have a child, are preferably self-closing, while components that have children need to have an ending tag
 - in HTML, the rule is a bit different and self-closing tags can onluy be used for void elements like `img`
+
+## Export / Import
+
+| Syntax  | Export statement                    | Import statement                  |
+|---------|---------------------------------------|-----------------------------------|
+| Default | `export default function Button() {}` | `import Button from './Button.js';` |
+| Named   | `export function Button() {}`         | `import { Button } from './Button.js';` |
