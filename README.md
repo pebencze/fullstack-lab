@@ -14,7 +14,7 @@ This is a repository to track my learning path in fullstack development. I will 
 ## Projects
 
 ### Personal Dashboard
-- [folder](javascript/async/dashboard/)
+- [source code](javascript/async/dashboard/)
 - created a personal dashboard with dynamic background image, weather information based on geolocation, bitcoin prices, and time
 - usable as chrome extension in my own browser
 
@@ -22,7 +22,7 @@ This is a repository to track my learning path in fullstack development. I will 
 ![Chrome Extension Screenshot](readme/extension.png)
 
 ### Tic-Tac-Toe
-- [folder](react/tic-tac-toe/)
+- [source code](react/tic-tac-toe/)
 - my first project in React following the official [react.dev](https://react.dev/learn/tutorial-tic-tac-toe) tutorial
 - learned about _components_ and _states_ in React, as well as the benefits of _immutability_ by storing a history of steps
 - touched on _closures_ and _fragments_, too
@@ -31,7 +31,12 @@ This is a repository to track my learning path in fullstack development. I will 
 
 
 ### React Facts
-- [folder](react/fun-facts/)
+- [source code](react/fun-facts/)
 - small initial React projects to learn about structuring the projects, styling it and about components
 
 ![React Facts Screenshot](readme/react-facts.png)
+
+
+### Travel Journal
+- [source code](react/data-driven-react/)
+- travel journal using _props_ to pass an array of data from a `.js` file to our _components_

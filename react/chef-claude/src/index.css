@@ -1,0 +1,72 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Inter, sans-serif;
+    background-color: rgb(235, 229, 221);
+    padding: 7px;
+}
+
+header {
+  background-color: white;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  padding: 20px;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.10), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+header > img {
+  height: 50px;
+  background-color: white;
+}
+
+header > h1 {
+  font-weight: 400;
+  background-color: white;
+}
+
+main {
+  padding: 10px 30px;
+}
+
+.add-ingredient-form {
+  display: flex;
+  justify-content: center;
+  height: 32px;
+  gap: 12px;
+}
+
+.add-ingredient-form > input {
+    border-radius: 6px;
+    border: 1px solid #D1D5DB;
+    padding: 9px 13px;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+    flex-grow: 1;
+    min-width: 150px;
+    max-width: 400px;
+}
+
+.add-ingredient-form > button {
+  border-radius: 6px;
+  border: 1px solid #D1D5DB;
+  padding: 9px 13px;
+  flex-grow: 1;
+  min-width: 75px;
+  max-width: 200px;
+  background-color: black;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.add-ingredient-form > button::before {
+  content: "+";
+  margin-right: 5px;
+}
