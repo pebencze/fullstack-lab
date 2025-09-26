@@ -1,5 +1,3 @@
-// import Header from '@/components/Header';
-// import Entry from '@/components/Entry';
 import journalData from '@/data/journalData';
 import { Entry, Header } from './components';
 
@@ -9,12 +7,8 @@ function App(){
     return (
       <Entry 
          key={entry.id} // key 
-         img={entry.img}
-         country={entry.country}
-         googleMapsLink={entry.googleMapsLink}
-         title={entry.title}
-         dates={entry.dates}
-         description={entry.description}
+         {...entry} // spread operator to send props bundled in one object
+         // entry={entry} // also possible, but would require some more chaining inside Entry.jsx-> less readable
       />
     )
   })
