@@ -25,7 +25,12 @@ export default function App() {
   function signUp(formData){
     const email = formData.get('email')
     const password = formData.get('password')
-    console.log(email, password)
+    const dietaryRestrictions = formData.getAll('dietaryRestrictions') // need to use getAll here!!
+    const employmentStatus = formData.get('employmentStatus')
+    const favColor = formData.get('favcolor')
+    console.log(email, password, dietaryRestrictions, employmentStatus, favColor)
+    //----------Logging an object------------//
+    console.log(Object.fromEntries(formData)) // this gives us back an object with all the form data
   }
 
   return (
@@ -53,7 +58,7 @@ export default function App() {
             full-time
           </label>
           <label>
-            <input type="radio" name="employmentStatus" value="part-time"/>
+            <input type="radio" name="employmentStatus" defaultChecked={true} value="part-time"/>
             part-time
           </label>
           <label>
@@ -61,6 +66,33 @@ export default function App() {
             unemployed
           </label>
         </fieldset>
+
+        <fieldset>
+          <legend>Employment Status:</legend>
+          <label>
+            <input type="checkbox" name="dietaryRestrictions" value="vegan"/>
+            full-time
+          </label>
+          <label>
+            <input type="checkbox" name="dietaryRestrictions" value="gluten-free"/>
+            part-time
+          </label>
+          <label>
+            <input type="checkbox" name="dietaryRestrictions" defaultChecked={true}
+            value="sugar-free"/>
+            unemployed
+          </label>
+        </fieldset>
+
+        <label htmlFor='favcolor'>What is your favourite color?</label>
+        <select id='favcolor' name='favcolor' required>
+          <option value="" disabled>-- Choose a color --</option>
+          <option value='red'>Red</option>
+          <option value='green'>Green</option>
+          <option value='blue'>Blue</option>
+          <option value='yellow'>Yellow</option>
+        </select>
+        
 
         {/* version 1 of submit button
         <input type="submit" value="Click" /> */}
