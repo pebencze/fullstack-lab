@@ -38,18 +38,34 @@ export default function App() {
         </label> */}
         {/* version 2 of input and label*/}
         <label htmlFor="email">Email:</label>
-        <input id="email" type="email" name="email" placeholder="example@email.com" />
-        <br/>
+        <input id="email" defaultValue="example@email.com" type="email" name="email" placeholder="example@email.com" />
 
         <label htmlFor='password'>Password:</label>
-        <input id="password" type="password" name="password" placeholder='********'></input>
-        <br/>
+        <input id="password" defaultValue="abcd1234" type="password" name="password" placeholder='********'></input>
+
+        <label htmlFor="description">Description:</label>
+        <textarea id="description" name="description"></textarea>
+
+        <fieldset>
+          <legend>Employment Status:</legend>
+          <label>
+            <input type="radio" name="employmentStatus" value="full-time"/>
+            full-time
+          </label>
+          <label>
+            <input type="radio" name="employmentStatus" value="part-time"/>
+            part-time
+          </label>
+          <label>
+            <input type="radio" name="employmentStatus" value="unemployed"/>
+            unemployed
+          </label>
+        </fieldset>
 
         {/* version 1 of submit button
         <input type="submit" value="Click" /> */}
         {/* version 2 of submit button*/}
         <button>Submit</button>
-        <br />
       </form>
 
     </section>
