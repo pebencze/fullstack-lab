@@ -31,6 +31,7 @@ import App from "./App"; // the component you created
 
 ## States
 ~: to remember things, components use _states_
+- re-rendering happens also for child components that inherit props that hold a state
 - `useState()` returns an array of 2 elements...
     - `const result = React.useState("Hello")`
 - we use **array destructuring**
@@ -65,6 +66,13 @@ function add() {
 ```
 - never EVER directly modify state, use setState !!!
 
+### Passing data to components
+- you can pass states from parent -> child
+- you can NOT pass states from child -> parent
+- you can NOT pass states from sibling -> sibling
+- best practice: 
+    - pass just one level up when needed, don't have a "global parent" 
+    - create a common parent if you need to pass state from sibling to sibling
 
 ## Props
 ~: Props are how you pass data from a parent component to a child component. They are read-only and help make components reusable.
