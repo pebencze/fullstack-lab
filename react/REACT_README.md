@@ -31,6 +31,40 @@ import App from "./App"; // the component you created
 
 ## States
 ~: to remember things, components use _states_
+- `useState()` returns an array of 2 elements...
+    - `const result = React.useState("Hello")`
+- we use **array destructuring**
+    - `const result[state, setState] = React.useState("Hello")`
+- this would create an _infinite loop_:
+```javascript
+import React from "react"
+
+export default function App() {
+    let [isImportant, setIsImportant] = React.useState("Yes")
+    setIsImportant("Heck yes!")
+    
+    return (
+        <main>
+            <h1 className="title">Is state important to know?</h1>
+            <button className="value">{isImportant}</button>
+        </main>
+    )
+}
+```
+- Rule of thumb: **if you ever need the old value of state to help you determine the new value of state,you should pass a callback function to yourstate setter function instead of usingstate directly.**
+```javascript
+// better use a callback function
+function add() {
+    setCount(prevCount => prevCount + 1)
+}
+
+// not this!
+function add() {
+    setCount(count + 1)
+}
+```
+- never EVER directly modify state, use setState !!!
+
 
 ## Props
 ~: Props are how you pass data from a parent component to a child component. They are read-only and help make components reusable.
@@ -38,6 +72,7 @@ import App from "./App"; // the component you created
 ## Props vs. State
 Props and states are the two types of "models" in React, but they areb very different.
 - **Props** are arguments that you pass from a parent component to a child component e.g. a `Form` can pass `color` prop to a `Button`
+    - props should be immutable!!
 - **State** is like a component's memory and it helps keeping track of interaction e.g. `Button` might keep track of `isHovered` state
 
 ## React Developer Tools
