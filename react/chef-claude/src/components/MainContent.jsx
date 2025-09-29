@@ -1,6 +1,8 @@
+import React, { useState } from "react"
+
 export default function MainContent() {
 
-    const ingredients = ["Oregano", "Chicken", "Tomato"]
+    const [ingredients, setIngredients] = useState([])
 
     const ingredientsList = ingredients.map((ingredient, index) => {
         return <li key={index}>{ingredient}</li>
@@ -9,19 +11,21 @@ export default function MainContent() {
     function handleAddIngredient(event){
         event.preventDefault()
         const formData = new FormData(event.target)
-        console.log(formData.get("ingredient"))
-        console.log("Ingredient added!")
+        const newIngredient = formData.get("ingredient")
+        setIngredients([...ingredients, newIngredient])
+        event.target.reset()
     }
 
     return (
         <main>
-            <form className="add-ingredient-form" onSubmit={handleAddIngredient}>
+            <form onSubmit={handleAddIngredient} className="add-ingredient-form">
                 <input
                     type="text"
                     placeholder="e.g. oregano"
+                    aria-label="Add ingredient"
                     name="ingredient"
                 />
-                <button type="submit">Add ingredient</button>
+                <button>Add Ingredient</button>
             </form>
             <ul>
                 {ingredientsList}
