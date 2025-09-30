@@ -118,3 +118,28 @@ This is a cool browser extension that helps you to inspect components. It contai
 - [official doc](https://react.dev/learn/rendering-lists)
 - JavaScript array methods – e.g. `filter()`, `map()` – can be used to manipulate an array of data in React 
 - an ID (uuid or database index) is needed to track what items get deleted, inserted or updated
+
+
+## Routing
+- [official doc](https://react.dev/learn/routing)
+- useful for SPA (single page applications)
+- ~: assigning a URL
+- simple interface: `BrowserRouter`, `Link`, `Route`, `Redirectand`, `Switch`
+- also contains a `history` API
+- Installation:
+```bash
+npm install --save react-router-dom
+```
+- requires a **router context** outside of the application:
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+
+const App = () => {
+  return <Router>[...]</Router>;
+};
+
+ReactDOM.render(<App />, document.getElementById('root'));
+```
+- you can create custom error pages following [this guide](https://github.com/remix-run/react-router/discussions/11352)
