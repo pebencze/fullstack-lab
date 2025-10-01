@@ -69,6 +69,14 @@ function add() {
 ### Controlled vs. uncontrolled components
 React controls the compinent, i.e. there is state attached to it.
 
+    ### Passing data to components
+    - you can pass states from parent -> child
+    - you can NOT pass states from child -> parent
+    - you can NOT pass states from sibling -> sibling
+    - best practice: 
+        - pass just one level up when needed, don't have a "global parent" 
+        - create a common parent if you need to pass state from sibling to sibling
+
 ### Avoiding side-effects
 - (out)-side-effects -> concerns APIs, websockets, subscriptions, database interactions, localStorage
 - fetching data in the example below would create an infinite loop, because once it fetches the data it re-renders, 
@@ -92,13 +100,34 @@ export default function App(props) {
 ```
 => SOLUTION: **useEffect** is a React Hook that lets you synchronize a component with an external system
 
-### Passing data to components
-- you can pass states from parent -> child
-- you can NOT pass states from child -> parent
-- you can NOT pass states from sibling -> sibling
-- best practice: 
-    - pass just one level up when needed, don't have a "global parent" 
-    - create a common parent if you need to pass state from sibling to sibling
+## UseEffect
+- does not work with async functions
+- useffect can set up an eventListener when the component is mounted and unmount it with removeEventListener when the component is unmounted
+- aka: the return value of our callback function for useEffect can contain a cleanup function to help escape from side-effects
+```javascript
+export default function WindowTracker() {
+    const [windowWidth, setWindowWidth] = React.useState(window.innerWidth)
+    
+    React.useEffect(() => {
+        // declare the function used in our eventlistener
+        function watchWindowWidth () {
+            console.log("Resized")
+            setWindowWidth(window.innerWidth)
+        }
+        // mount function when component is mounted
+        window.addEventListener("resize", watchWindowWidth)
+        // unmount function when component is unmounted, aka return a function
+        return function() {
+            window.removeEventListener("resize", watchWindowWidth)
+        }
+    }, [])
+    
+    return (
+        <h1>Window width: {windowWidth}</h1>
+    )
+}
+```
+
 
 ## Props
 ~: Props are how you pass data from a parent component to a child component. They are read-only and help make components reusable.
