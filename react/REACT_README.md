@@ -66,6 +66,32 @@ function add() {
 ```
 - never EVER directly modify state, use setState !!!
 
+### Controlled vs. uncontrolled components
+React controls the compinent, i.e. there is state attached to it.
+
+### Avoiding side-effects
+- (out)-side-effects -> concerns APIs, websockets, subscriptions, database interactions, localStorage
+- fetching data in the example below would create an infinite loop, because once it fetches the data it re-renders, 
+but re-rendering triggers the fetching mechanism again:
+```javascript
+export default function App(props) {
+    const [starWarsData, setStarWarsData] = React.useState(null)
+    
+    // console.log("Rendered!")
+    
+    fetch("https://swapi.dev/api/people/1")
+        .then(res => res.json())
+        .then(data => setStarWarsData(data))
+    
+    return (
+        <div>
+            <pre>{JSON.stringify(starWarsData, null, 2)}</pre>
+        </div>
+    )
+}
+```
+=> SOLUTION: **useEffect** is a React Hook that lets you synchronize a component with an external system
+
 ### Passing data to components
 - you can pass states from parent -> child
 - you can NOT pass states from child -> parent
