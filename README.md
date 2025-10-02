@@ -45,3 +45,12 @@ This is a repository to track my learning path in fullstack development. I will 
 ![Travel Journal Screenshot](readme/travel-journal.png)
 
 
+## Meme Generator
+- [source code](react/meme-generator/)
+- throughout this project I have learned about the practicability of `useEffect` in order to prevent inifinite loops during API calls;
+otherwise a re-rendering would be triggered because of the state-update
+- `useEffect` is a hook that lets you perform "side-effects" in your components
+
+![Meme generator Screenshot](/readme/meme-generator.png)
+
+

@@ -128,6 +128,16 @@ export default function WindowTracker() {
 }
 ```
 
+## Rule of Hooks
+**Call Hooks at the Top Level**
+This means you must not call Hooks (useState, useEffect, etc.) inside:
+- Loops (for, while)
+- Conditions (if, else)
+- Nested functions
+
+**Why??**
+=> React relies on the call order of Hooks to work correctly. Behind the scenes, React maintains an internal list (like an array) of state and effects for your component. On the next render, React expects the exact same order to give you back the correct state and manage the effect properly.
+If you need to run an effect conditionally, put the if statement inside the useEffect function body, not outside.
 
 ## Props
 ~: Props are how you pass data from a parent component to a child component. They are read-only and help make components reusable.
