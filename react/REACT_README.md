@@ -148,6 +148,24 @@ Props and states are the two types of "models" in React, but they areb very diff
     - props should be immutable!!
 - **State** is like a component's memory and it helps keeping track of interaction e.g. `Button` might keep track of `isHovered` state
 
+
+## Rule of Thumb for Structuring Components
+### The Parent Component's Job
+The parent is the "smart" component or the "brain" of the operation.
+
+- Owns the State: It uses useState to hold the application's data (e.g., selectedCards, matchedCards).
+- Owns the Logic: It defines the functions that change the state (e.g., handleClick, checkForMatch).
+- Passes Data Down: It passes the state and handler functions down to children as props.
+
+### The Child Component's Job
+The child is the "dumb" or "presentational" component. It shouldn't know about the overall application's logic.
+
+- Receives Props: It takes data and functions from its parent.
+- Handles Display Logic: It can have its own internal logic to decide how to render itself based on the props it receives (e.g., (isSelected) ? content : "?").
+- Is Reusable: Its primary goal is to be a self-contained, reusable piece of UI.
+
+Think of the parent as a director and the children as actors. The director holds the script (the state) and tells the actors what their motivation is (the props). The actor's job is to use that direction to deliver their lines and perform their actions (render the UI).
+
 ## React Developer Tools
 This is a cool browser extension that helps you to inspect components. It contains "Profiler" and "Components".
 ![](../readme/dev_tools.png)
