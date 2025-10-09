@@ -1,8 +1,9 @@
 # React
 
-## Best Practices
+## Recommendations
 
 - [Medium article about BEST PRACTICES](https://medium.com/@oretugafolorunso/five-best-practices-for-front-end-development-react-42f187a996b1)
+- [Pure Components](https://react.dev/learn/keeping-components-pure)
 
 ## Components
 ~: a component is _a piece of reusable code_ that represents a part of a user interface
